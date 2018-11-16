@@ -44,7 +44,34 @@ public:
   // character).
   // For example, "can't" and "good-hearted" are considered valid words.
   // "12mOnkEYs-$" will be stripped to "mOnkEYs"
+  void dumpWordsSortedByWord(std::ostream &out) const;
+  // Dump each word,count pair as CSV to std::ostream, sorted by word in
+  // ascending lexicographical order based on ASCII values. Each word count
+  // pair will be in its own line with as: word,occurrence
+  // For example, if the following string of words was entered into the
+  // table:  "Sentence is a sentence.", then out will contain:
+  // A,1\n
+  // IS,1\n
+  // SENTENCE,2\n
 
+  void dumpWordsSortedByOccurence(std::ostream &out) const;
+  // dump each word,count as CSV to std::ostream, sorted by occurence in
+  // descending order.
+  // In the event of a tie, ordering is defined by the ascending
+  // lexicographical order of the word based on its ASCII value.
+  // Each word count pair will be in its own line with as word,numOccurence.
+  // For example, if the following string of words was entered into the 
+  // table: "Sentence is a sentence.", then out will contain:
+  // SENTENCE,2\n
+  // A,1\n
+  // IS,1\n
+
+  void addAllWords(std::string text);
+  // parse out the string text into individual words, and add each word
+  // to the hash table. You may assume that words are always
+  // separated by a space (' ') or newline ('\n') within the string text.
+  // It is possible for the text to have multiple spaces and newlines
+  // before/after each word.
 private:
   const static size_t CAPACITY = 100;
   // capacity for the hash table array
